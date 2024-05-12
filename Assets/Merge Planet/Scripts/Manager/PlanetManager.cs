@@ -8,8 +8,7 @@ using Random = UnityEngine.Random;
 public class PlanetManager : MonoBehaviour
 {
     [Header(" Elements ")]
-    [SerializeField] private Planet[] planetPrefabs;
-    [SerializeField] private Planet[] spawnablePlanets;
+    [SerializeField] private SkinDataSO skinData;
     [SerializeField] private Transform planetsParent;
     [SerializeField] private LineRenderer planetSpawnLine;
     private Planet currentPlanet;
@@ -106,7 +105,7 @@ public class PlanetManager : MonoBehaviour
     private void SpawnPlanet()
     {
         Vector2 spawnPosition = GetSpawnPosition();
-        Planet planetToInstatiate = spawnablePlanets[nextPlanetIndex];
+        Planet planetToInstatiate = skinData.GetSpawnablePrefabs()[nextPlanetIndex];
 
         currentPlanet = Instantiate(
             planetToInstatiate, 
@@ -118,18 +117,18 @@ public class PlanetManager : MonoBehaviour
 
     private void SetNextPlanetIndex()
     {
-        nextPlanetIndex = Random.Range(0, spawnablePlanets.Length);
+        nextPlanetIndex = Random.Range(0, skinData.GetSpawnablePrefabs().Length);
         onNextPlanetSet?.Invoke();
     }
 
     public string GetNextPlanetName()
     {
-        return spawnablePlanets[nextPlanetIndex].GetPlanetType().ToString();
+        return skinData.GetSpawnablePrefabs()[nextPlanetIndex].GetPlanetType().ToString();
     }
 
     public Sprite GetNextPlanetSprite()
     {
-        return spawnablePlanets[nextPlanetIndex].GetSprite();
+        return skinData.GetSpawnablePrefabs()[nextPlanetIndex].GetSprite();
     }
 
     private Vector2 GetClickedWorldPosition()
@@ -172,11 +171,11 @@ public class PlanetManager : MonoBehaviour
 
     private void MergeProcessedCalback(PlanetType planetType, Vector2 spawnPosition)
     {
-        for(int i = 0; i < planetPrefabs.Length; i++)
+        for(int i = 0; i < skinData.GetObjectPrefabs().Length; i++)
         {
-            if (planetPrefabs[i].GetPlanetType() == planetType)
+            if (skinData.GetObjectPrefabs()[i].GetPlanetType() == planetType)
             {
-                SpawnMergePlanet(planetPrefabs[i], spawnPosition);
+                SpawnMergePlanet(skinData.GetObjectPrefabs()[i], spawnPosition);
                 break;
             }
         }

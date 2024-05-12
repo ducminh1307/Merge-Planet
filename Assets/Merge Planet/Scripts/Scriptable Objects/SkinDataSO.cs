@@ -10,4 +10,14 @@ public class SkinDataSO : ScriptableObject
 
     [SerializeField]
     private Planet[] spawnablePrefabs;
+
+    public Planet[] GetObjectPrefabs()
+    {
+        return objectPrefabs;
+    }
+
+    public Planet[] GetSpawnablePrefabs()
+    {
+        return spawnablePrefabs;
+    }
 }

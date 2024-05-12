@@ -325,19 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d078136520f4d4b89861219c61748f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetPrefabs:
-  - {fileID: 3692689725381309432, guid: df7b2030b47b71647b68790ab856510e, type: 3}
-  - {fileID: 898479518990752952, guid: 1ed9d4ca577331d478c1aba17ec674d7, type: 3}
-  - {fileID: 585859681700266394, guid: b412756f70ecab24d8a876aa339c0734, type: 3}
-  - {fileID: 4067237378584054098, guid: 303729a3c65126e49b01355342d6dde2, type: 3}
-  - {fileID: 683810846544989040, guid: 4dd7df454350f3e428ed27da287e69e6, type: 3}
-  - {fileID: 3353443782395317645, guid: a73a8f20fb9460345aa0d5dee4c31cc4, type: 3}
-  - {fileID: 5577887800505511265, guid: be001f7acf155f6429ccd94ae106b47a, type: 3}
-  - {fileID: 1087034785185589377, guid: 2878bbe7283467748a09663e74a6050f, type: 3}
-  - {fileID: 5060736977723813940, guid: d2244aa21cecfab4e87b793cb20346e7, type: 3}
-  spawnablePlanets:
-  - {fileID: 3692689725381309432, guid: df7b2030b47b71647b68790ab856510e, type: 3}
-  - {fileID: 898479518990752952, guid: 1ed9d4ca577331d478c1aba17ec674d7, type: 3}
+  skinData: {fileID: 11400000, guid: 90c95581444872d42bd00a9129504cde, type: 2}
   planetsParent: {fileID: 301597207}
   planetSpawnLine: {fileID: 1942546736}
   planetYSpawnPos: 3.6
