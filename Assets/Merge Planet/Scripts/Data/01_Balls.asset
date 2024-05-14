@@ -12,5 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a533b218b30178a4593e3abe7ab6e245, type: 3}
   m_Name: 01_Balls
   m_EditorClassIdentifier: 
-  objectPrefabs: []
-  spawnablePrefabs: []
+  objectPrefabs:
+  - {fileID: 953384632269129641, guid: 25e39cdb780e774438d290aead708675, type: 3}
+  - {fileID: 953384632269129641, guid: 29c2a1123b6ce0149a70564ff16a9b2f, type: 3}
+  - {fileID: 953384632269129641, guid: 8947dc6dc1f421e41811c5174e9ebe3b, type: 3}
+  - {fileID: 953384632269129641, guid: 633d0037c1417394193a55b9549bcdca, type: 3}
+  - {fileID: 953384632269129641, guid: e1f84702873940649a1cf9db74948822, type: 3}
+  - {fileID: 953384632269129641, guid: 1b538dea56fc4a742bd1cba79dec6305, type: 3}
+  - {fileID: 953384632269129641, guid: 3ba29df5d58033c41a0ba74f756e94f0, type: 3}
+  - {fileID: 953384632269129641, guid: 45d7a7b0db2206b46a35fc419c094cf3, type: 3}
+  - {fileID: 953384632269129641, guid: 69725872377dad14da5583a5ffa29a2b, type: 3}
+  spawnablePrefabs:
+  - {fileID: 953384632269129641, guid: 25e39cdb780e774438d290aead708675, type: 3}
+  - {fileID: 953384632269129641, guid: 29c2a1123b6ce0149a70564ff16a9b2f, type: 3}
