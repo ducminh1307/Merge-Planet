@@ -26,6 +26,17 @@ public class TabsManager : MonoBehaviour
     [SerializeField] private Vector2 activeTextSize;
     [SerializeField] private Color activeTextColor;
 
+    public static TabsManager instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(instance);
+        } 
+        instance = this;
+    }
+
     public void switchToTab(int tabId)
     {
         foreach (Image tabButton in tabButtons)

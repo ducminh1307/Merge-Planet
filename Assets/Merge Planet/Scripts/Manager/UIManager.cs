@@ -96,10 +96,13 @@ public class UIManager : MonoBehaviour
     public void ShopButtonCallback()
     {
         shopPanel.SetActive(true);
+        TabsManager.instance.switchToTab(0);
+        menuPanel.SetActive(false);
     }
 
     public void BackButtonCallback()
     {
         shopPanel.SetActive(false);
+        menuPanel.SetActive(true);
     }
 }
