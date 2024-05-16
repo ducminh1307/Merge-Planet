@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5971c4db9b0ab534cb5dbcf3403264e9
+guid: 82ffb7479e17532449dcd253ca3f98c6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -74,7 +74,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 0
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
