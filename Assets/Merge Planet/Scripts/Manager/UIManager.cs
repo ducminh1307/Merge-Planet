@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject gameoverPanel;
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject shopPanel;
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class UIManager : MonoBehaviour
             case GameState.Game:
                 SetGame();
                 break;
+
 
             case GameState.Gameover:
                 SetGameover();
@@ -89,5 +91,15 @@ public class UIManager : MonoBehaviour
     public void CloseSettingPanel ()
     {
         settingsPanel.SetActive(false);
+    }
+
+    public void ShopButtonCallback()
+    {
+        shopPanel.SetActive(true);
+    }
+
+    public void BackButtonCallback()
+    {
+        shopPanel.SetActive(false);
     }
 }
