@@ -75,4 +75,11 @@ public class GameManager : MonoBehaviour
         SetGameover();
     }
 
+    public string NumberIntToText(int number)
+    {
+        if (number < 10000)
+            return number.ToString("0000");
+        return number.ToString();
+    }
+
 }

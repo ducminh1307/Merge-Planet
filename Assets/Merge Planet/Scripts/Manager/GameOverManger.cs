@@ -15,11 +15,6 @@ public class GameOverManger : MonoBehaviour
     private bool timerOn;
     private bool isGameover;
 
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {

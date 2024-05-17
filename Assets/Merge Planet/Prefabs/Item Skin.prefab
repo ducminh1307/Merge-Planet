@@ -262,7 +262,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 99999
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 65f3bada7f63f1f4fbb19ee6fe0b4d88, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f9575067b0b333e4a81d3f420acfe713, type: 2}
   m_sharedMaterial: {fileID: 8439182340079384831, guid: 65f3bada7f63f1f4fbb19ee6fe0b4d88, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3489855274895314604
@@ -792,3 +792,4 @@ MonoBehaviour:
   selectionOutline: {fileID: 2136291804391793602}
   unlockButton: {fileID: 2797956482439932378}
   skinButton: {fileID: 6543865354192679371}
+  priceText: {fileID: 5636942270330997752}

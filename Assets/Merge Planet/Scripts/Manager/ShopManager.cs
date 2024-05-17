@@ -39,6 +39,7 @@ public class ShopManager : MonoBehaviour
             int skinIndex = i;
             skinButtonInstance.GetComponent<SkinButton>().GetButton().onClick.AddListener(() => SkinButtonCallback(skinIndex));
             skinButtonInstance.GetComponent<SkinButton>().GetUnlockButton().onClick.AddListener(() => UnlockButtonCallback(skinIndex));
+            skinButtonInstance.GetComponent<SkinButton>().SetPrice(skinDatas[i].GetPrice());
 
             if (i == indexSkinSelected)
                 skinButtonInstance.GetComponent<SkinButton>().Selected();
