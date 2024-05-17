@@ -28,8 +28,6 @@ public class ScreenColliderManager : MonoBehaviour
     {
         Vector3 bottomLeftScreenPoint = Camera.main.ScreenToWorldPoint(new Vector3(0f, 0f, 0f));
         Vector3 topRightScreenPoint = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0f));
-
-        Debug.Log(bottomLeftScreenPoint + " - " + topRightScreenPoint);
         
         //// Create top collider
         BoxCollider2D collider = top.AddComponent<BoxCollider2D>();

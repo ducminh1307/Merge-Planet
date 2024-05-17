@@ -31,11 +31,13 @@ public class PlanetManager : MonoBehaviour
     private void Awake()
     {
         MergeManager.onMergeProcessed += MergeProcessedCalback;
+        ShopManager.onSkinSelected += SkinSelectedCallback;
     }
 
     private void OnDestroy()
     {
         MergeManager.onMergeProcessed -= MergeProcessedCalback;
+        ShopManager.onSkinSelected -= SkinSelectedCallback;
     }
 
     void Start()
@@ -185,6 +187,11 @@ public class PlanetManager : MonoBehaviour
     {
         Planet planetInstantiate = Instantiate(planet, spawnPosition, Quaternion.identity, planetsParent);
         planetInstantiate.EnablePhysics();
+    }
+
+    private void SkinSelectedCallback(SkinDataSO skin)
+    {
+        skinData = skin;
     }
 
 #if UNITY_EDITOR

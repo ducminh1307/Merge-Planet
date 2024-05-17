@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Skin Data", menuName = "Scritpable Objects/Skin Data", order = 0)]
 public class SkinDataSO : ScriptableObject
 {
-    [SerializeField]
-    private Planet[] objectPrefabs;
+    [SerializeField] private Sprite iconSkin;
 
-    [SerializeField]
-    private Planet[] spawnablePrefabs;
+    [SerializeField] private Planet[] objectPrefabs;
+
+    [SerializeField] private Planet[] spawnablePrefabs;
+
 
     public Planet[] GetObjectPrefabs()
     {
@@ -19,5 +21,10 @@ public class SkinDataSO : ScriptableObject
     public Planet[] GetSpawnablePrefabs()
     {
         return spawnablePrefabs;
+    }
+
+    public Sprite GetIconSkin()
+    {
+        return iconSkin;
     }
 }

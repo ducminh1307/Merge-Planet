@@ -12,8 +12,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject shopPanel;
 
+    public static UIManager instance;
+
     private void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(instance);
+
         GameManager.onGameStateChanged += GameStateChangedCallback;
     }
 
@@ -22,16 +29,6 @@ public class UIManager : MonoBehaviour
         GameManager.onGameStateChanged -= GameStateChangedCallback;
     }
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void GameStateChangedCallback(GameState gameState)
     {
         switch (gameState)
@@ -57,6 +54,7 @@ public class UIManager : MonoBehaviour
         gamePanel.SetActive(false);
         gameoverPanel.SetActive(false);
         settingsPanel.SetActive(false);
+        shopPanel.SetActive(false);
     }
 
     private void SetGame()
@@ -104,5 +102,12 @@ public class UIManager : MonoBehaviour
     {
         shopPanel.SetActive(false);
         menuPanel.SetActive(true);
+    }
+
+    public string ConvertIntToString(int number)
+    {
+        if (number < 10000)
+            return number.ToString("0000");
+        return number.ToString();
     }
 }
