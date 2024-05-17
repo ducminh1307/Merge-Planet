@@ -13,8 +13,9 @@ public class CoinManager : MonoBehaviour
     private const string coinKey = "Coins";
 
     [Header("Elements")]
-    [SerializeField] private TextMeshProUGUI coinTextHome;
-    [SerializeField] private TextMeshProUGUI coinTextShop;
+    [SerializeField] private TextMeshProUGUI coinHomeText;
+    [SerializeField] private TextMeshProUGUI coinShopText;
+    [SerializeField] private TextMeshProUGUI coinEarnText;
 
     private void Awake()
     {
@@ -41,8 +42,13 @@ public class CoinManager : MonoBehaviour
 
     public void UpdateCoinText()
     {
-        coinTextHome.text = GameManager.instance.NumberIntToText(coins);
-        coinTextShop.text = GameManager.instance.NumberIntToText(coins);
+        coinHomeText.text = GameManager.instance.NumberIntToText(coins);
+        coinShopText.text = GameManager.instance.NumberIntToText(coins);
+    }
+
+    public void UpdateCointEarnText(int coin)
+    {
+        coinEarnText.text = GameManager.instance.NumberIntToText(coin);
     }
 
     public bool canPurchase(int price) => coins >= price;

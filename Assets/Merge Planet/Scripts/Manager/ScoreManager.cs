@@ -67,6 +67,7 @@ public class ScoreManager : MonoBehaviour
         {
             case GameState.Gameover:
                 UpdateYourScoreText();
+                CalculateCoinToEarn();
                 CalculateBestScore();
                 break;
             case GameState.Menu:
@@ -82,6 +83,14 @@ public class ScoreManager : MonoBehaviour
             bestScore = score;
             SaveData();
         }
+    }
+
+    private void CalculateCoinToEarn()
+    {
+        double result = score / 100;
+        int coin = (int)Math.Round(result);
+        CoinManager.instance.UpdateCointEarnText(coin);
+        CoinManager.instance.AddCoin(coin);
     }
 
     private void SaveData()
