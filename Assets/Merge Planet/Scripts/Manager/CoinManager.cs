@@ -11,6 +11,7 @@ public class CoinManager : MonoBehaviour
     [Header("Variables")]
     private int coins;
     private const string coinKey = "Coins";
+    [field:SerializeField] public int coinCoefficient { get; private set; }
 
     [Header("Elements")]
     [SerializeField] private TextMeshProUGUI coinHomeText;

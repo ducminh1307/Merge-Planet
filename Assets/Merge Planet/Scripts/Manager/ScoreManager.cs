@@ -87,7 +87,7 @@ public class ScoreManager : MonoBehaviour
 
     private void CalculateCoinToEarn()
     {
-        double result = score / 100;
+        double result = score / CoinManager.instance.coinCoefficient;
         int coin = (int)Math.Round(result);
         CoinManager.instance.UpdateCointEarnText(coin);
         CoinManager.instance.AddCoin(coin);
