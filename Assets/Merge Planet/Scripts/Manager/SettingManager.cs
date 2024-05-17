@@ -8,15 +8,12 @@ public class SettingManager : MonoBehaviour
 {
     [Header(" Elements ")]
     [SerializeField] private GameObject resetProgessPrompt;
-    [SerializeField] private Slider pushMagnitudeSlider;
     [SerializeField] private Toggle sfxToggle;
 
     [Header(" Actions ")]
-    public static UnityAction<float> onPushMagnitudeSlideChanged;
     public static UnityAction<bool> onSFXValueChanged;
 
     [Header(" Datas ")]
-    private const string lastPushMahgnitudeKey = "lastMagnitude";
     private const string sfxActiveKey = "sfxActive";
 
     private void Awake()
@@ -52,27 +49,16 @@ public class SettingManager : MonoBehaviour
         SaveData();
     }
 
-    public void SliderValueChangedCallback()
-    {
-        onPushMagnitudeSlideChanged?.Invoke(pushMagnitudeSlider.value);
-        SaveData();
-    }
-
     private void LoadData()
     {
-        if (!PlayerPrefs.HasKey(lastPushMahgnitudeKey))
-            PlayerPrefs.SetFloat(lastPushMahgnitudeKey, 0);
         if (!PlayerPrefs.HasKey(sfxActiveKey))
             PlayerPrefs.SetInt(sfxActiveKey, 1);
 
-        pushMagnitudeSlider.value = PlayerPrefs.GetFloat(lastPushMahgnitudeKey);
         sfxToggle.isOn = PlayerPrefs.GetInt(sfxActiveKey) == 1;
     }
 
     private void SaveData()
     {
-        PlayerPrefs.SetFloat(lastPushMahgnitudeKey, pushMagnitudeSlider.value);
         PlayerPrefs.SetInt(sfxActiveKey, sfxToggle.isOn ? 1 : 0);
-
     }
 }
