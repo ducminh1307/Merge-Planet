@@ -60,8 +60,11 @@ public class SettingManager : MonoBehaviour
 
     private void LoadData()
     {
-        if (PlayerPrefs.HasKey(lastPushMahgnitudeKey))
-            pushMagnitudeSlider.value = 0;
+        if (!PlayerPrefs.HasKey(lastPushMahgnitudeKey))
+            PlayerPrefs.SetFloat(lastPushMahgnitudeKey, 0);
+        if (!PlayerPrefs.HasKey(sfxActiveKey))
+            PlayerPrefs.SetInt(sfxActiveKey, 1);
+
         pushMagnitudeSlider.value = PlayerPrefs.GetFloat(lastPushMahgnitudeKey);
         sfxToggle.isOn = PlayerPrefs.GetInt(sfxActiveKey) == 1;
     }

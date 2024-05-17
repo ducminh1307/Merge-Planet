@@ -30,52 +30,75 @@ public class ShopManager : MonoBehaviour
 
     private void Initialize()
     {
+        int indexSkinSelected = PlayerPrefs.GetInt("SkinSelected");
         for (int i = 0; i < skinDatas.Length;  i++)
         {
             GameObject skinButtonInstance = Instantiate(itemSkinPrefab, parentSkin);
             skinButtonInstance.GetComponent<SkinButton>().Configure(skinDatas[i].GetIconSkin());
 
-            int j = i;
-            skinButtonInstance.GetComponent<SkinButton>().GetButton().onClick.AddListener(() => SkinButtonCallback(j));
+            int skinIndex = i;
+            skinButtonInstance.GetComponent<SkinButton>().GetButton().onClick.AddListener(() => SkinButtonCallback(skinIndex));
+            skinButtonInstance.GetComponent<SkinButton>().GetUnlockButton().onClick.AddListener(() => UnlockButtonCallback(skinIndex));
 
-            if (i == 0)
+            if (i == indexSkinSelected)
                 skinButtonInstance.GetComponent<SkinButton>().Selected();
 
-            skinButtonInstance.GetComponent<SkinButton>().Active(unlockStates[i]);
-
+            skinButtonInstance.GetComponent<SkinButton>().Unlock(unlockStates[i]);
         }
     }
 
-    private void SkinButtonCallback(int id)
+    private void SkinButtonCallback(int skinIndex)
     {
         for (int i =0; i < parentSkin.childCount; i++)
         {
             SkinButton currentButton = parentSkin.GetChild(i).GetComponent<SkinButton>();
 
-            if (i == id)
+            if (i == skinIndex)
                 currentButton.Selected();
             else
                 currentButton.Unselect();
         }
 
-        if (IsSkinActive(id))
-            onSkinSelected.Invoke(skinDatas[id]);
+        if (IsSkinActive(skinIndex))
+            onSkinSelected.Invoke(skinDatas[skinIndex]);
+
+        PlayerPrefs.SetInt("SkinSelected", skinIndex);
+    }
+
+    private void UnlockButtonCallback(int skinIndex)
+    {
+        // Check current coin can purchase the skin
+        if (!CoinManager.instance.canPurchase(skinDatas[skinIndex].GetPrice()))
+            return;
+
+        //Purchase the skin
+        unlockStates[skinIndex] = true;
+
+        parentSkin.GetChild(skinIndex).GetComponent<SkinButton>().Unlock(true);
+        SkinButtonCallback(skinIndex);
+
+        SaveData();
     }
 
     private bool IsSkinActive(int id) => unlockStates[id];
 
+    private void SaveData()
+    {
+        for (int i = 0; i < unlockStates.Length; i++)
+        {
+            int value = unlockStates[i] ? 1 : 0;
+            PlayerPrefs.SetInt($"Skin_{i}", value);
+        }
+    }
+
     private void LoadData()
     {
-        unlockStates[0] = true;
-
-        if (unlockStates.Length > 2)
+        for (int i = 1; i < unlockStates.Length; i++)
         {
-            for (int i = 1; i < unlockStates.Length; i++)
-            {
-                int unlockedValue = PlayerPrefs.GetInt($"Skin_{i}");
+            int unlockedValue = PlayerPrefs.GetInt($"Skin_{i}");
 
-                if (unlockedValue == 1) unlockStates[i] = true;
-            }
+            if (unlockedValue == 1) unlockStates[i] = true;
         }
+        unlockStates[0] = true;
     }
 }

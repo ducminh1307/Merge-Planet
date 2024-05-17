@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 8097001938761228710}
   - component: {fileID: 2797956482439932378}
   m_Layer: 0
-  m_Name: Black Overlay
+  m_Name: Unlock Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -790,5 +790,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconImage: {fileID: 2896163668461908241}
   selectionOutline: {fileID: 2136291804391793602}
-  buyButton: {fileID: 5178864389881232554}
+  unlockButton: {fileID: 2797956482439932378}
   skinButton: {fileID: 6543865354192679371}
