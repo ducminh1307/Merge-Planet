@@ -16,8 +16,8 @@ public class Planet : MonoBehaviour
     [Header(" Actions ")]
     public static UnityAction<Planet, Planet> onCollisionWithFruit;
 
-    [Header(" Effects ")]
-    [SerializeField] private ParticleSystem mergeParticales;
+    //[Header(" Effects ")]
+    //[SerializeField] private ParticleSystem mergeParticales;
 
     void Start()
     {
@@ -77,11 +77,11 @@ public class Planet : MonoBehaviour
 
     public void Merge()
     {
-        if (mergeParticales != null)
-        {
-            mergeParticales.transform.SetParent(null);
-            mergeParticales.Play();
-        }
+        //if (mergeParticales != null)
+        //{
+        //    mergeParticales.transform.SetParent(null);
+        //    mergeParticales.Play();
+        //}
         Destroy(gameObject);
     }
 

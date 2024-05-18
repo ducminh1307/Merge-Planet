@@ -95,7 +95,7 @@ public class UIManager : MonoBehaviour
     public void ShopButtonCallback()
     {
         shopPanel.SetActive(true);
-        TabsManager.instance.switchToTab(0);
+        TabUI.instance.switchToTab(0);
         menuPanel.SetActive(false);
     }
 

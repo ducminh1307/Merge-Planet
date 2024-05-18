@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TabsManager : MonoBehaviour
+public class TabUI : MonoBehaviour
 {
     [Header("Element of tab button")]
     [SerializeField] private Image[] tabButtons;
@@ -26,7 +26,7 @@ public class TabsManager : MonoBehaviour
     [SerializeField] private Vector2 activeTextSize;
     [SerializeField] private Color activeTextColor;
 
-    public static TabsManager instance;
+    public static TabUI instance;
 
     private void Awake()
     {

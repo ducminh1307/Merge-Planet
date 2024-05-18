@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class CoinManager : MonoBehaviour
@@ -36,6 +37,14 @@ public class CoinManager : MonoBehaviour
     public void AddCoin(int _coins)
     {
         coins += _coins;
+        SaveData();
+
+        UpdateCoinText();
+    }
+
+    public void Purchase(int price)
+    {
+        coins -= price;
         SaveData();
 
         UpdateCoinText();

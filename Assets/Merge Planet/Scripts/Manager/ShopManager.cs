@@ -31,6 +31,9 @@ public class ShopManager : MonoBehaviour
     private void Initialize()
     {
         int indexSkinSelected = PlayerPrefs.GetInt("SkinSelected");
+
+        PlanetManager.instance.SkinSelectedCallback(skinDatas[indexSkinSelected]);
+
         for (int i = 0; i < skinDatas.Length;  i++)
         {
             GameObject skinButtonInstance = Instantiate(itemSkinPrefab, parentSkin);
@@ -64,6 +67,8 @@ public class ShopManager : MonoBehaviour
             onSkinSelected.Invoke(skinDatas[skinIndex]);
 
         PlayerPrefs.SetInt("SkinSelected", skinIndex);
+
+        Debug.Log("Test" + skinIndex);
     }
 
     private void UnlockButtonCallback(int skinIndex)
@@ -77,6 +82,8 @@ public class ShopManager : MonoBehaviour
 
         parentSkin.GetChild(skinIndex).GetComponent<SkinButton>().Unlock(true);
         SkinButtonCallback(skinIndex);
+
+        CoinManager.instance.Purchase(skinDatas[skinIndex].GetPrice());
 
         SaveData();
     }

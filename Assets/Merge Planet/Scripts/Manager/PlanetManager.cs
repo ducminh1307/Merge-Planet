@@ -28,8 +28,15 @@ public class PlanetManager : MonoBehaviour
     [Header(" Actions ")]
     [SerializeField] public static Action onNextPlanetSet;
 
+    public static PlanetManager instance;
+
     private void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(instance);
+
         MergeManager.onMergeProcessed += MergeProcessedCalback;
         ShopManager.onSkinSelected += SkinSelectedCallback;
     }
@@ -189,7 +196,7 @@ public class PlanetManager : MonoBehaviour
         planetInstantiate.EnablePhysics();
     }
 
-    private void SkinSelectedCallback(SkinDataSO skin)
+    public void SkinSelectedCallback(SkinDataSO skin)
     {
         skinData = skin;
     }
