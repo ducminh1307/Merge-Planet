@@ -6,28 +6,20 @@ public class AudioManager : MonoBehaviour
 {
     [Header("Elements")]
     [SerializeField] private AudioSource mergeAudio;
+    [SerializeField] private AudioSource musicAudio;
 
     private void Awake()
     {
         MergeManager.onMergeProcessed += MergeProcessCallback;
         SettingManager.onSFXValueChanged += SFXValueChangedCallback;
+        SettingManager.onMusicValueChanged += MusicValueChangedCallback;
     }
 
     private void OnDestroy()
     {
         MergeManager.onMergeProcessed -= MergeProcessCallback;
         SettingManager.onSFXValueChanged -= SFXValueChangedCallback;
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SettingManager.onMusicValueChanged -= MusicValueChangedCallback;
     }
 
     public void PlayMergeSound()
@@ -44,5 +36,11 @@ public class AudioManager : MonoBehaviour
     private void SFXValueChangedCallback(bool sfxActive)
     {
         mergeAudio.volume = sfxActive ? 1 : 0;
+    }
+
+    private void MusicValueChangedCallback(bool musicActive)
+    {
+        musicAudio.Play();
+        musicAudio.volume = musicActive ? 1 : 0;
     }
 }

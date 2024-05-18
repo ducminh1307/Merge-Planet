@@ -6,6 +6,8 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Skin Data", menuName = "Scritpable Objects/Skin Data", order = 0)]
 public class SkinDataSO : ScriptableObject
 {
+    [SerializeField] private string nameSkin;
+ 
     [SerializeField] private int price;
 
     [SerializeField] private Sprite iconSkin;
@@ -14,6 +16,8 @@ public class SkinDataSO : ScriptableObject
 
     [SerializeField] private Planet[] spawnablePrefabs;
 
+
+    public string GetName() => nameSkin;
 
     public Planet[] GetObjectPrefabs() => objectPrefabs;
 

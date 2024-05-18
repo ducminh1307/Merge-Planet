@@ -1,14 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
     [Header("Elemets")]
     [SerializeField] private GameObject itemSkinPrefab;
     [SerializeField] private RectTransform parentSkin;
+    [SerializeField] private Image skinImage;
+    [SerializeField] private TextMeshProUGUI skinName;
 
     [Header("Data")]
     [SerializeField] private SkinDataSO[] skinDatas;
@@ -33,6 +37,9 @@ public class ShopManager : MonoBehaviour
         int indexSkinSelected = PlayerPrefs.GetInt("SkinSelected");
 
         PlanetManager.instance.SkinSelectedCallback(skinDatas[indexSkinSelected]);
+
+        skinImage.sprite = skinDatas[indexSkinSelected].GetObjectPrefabs()[0].GetSprite();
+        skinName.text = skinDatas[indexSkinSelected].GetName();
 
         for (int i = 0; i < skinDatas.Length;  i++)
         {
@@ -68,7 +75,8 @@ public class ShopManager : MonoBehaviour
 
         PlayerPrefs.SetInt("SkinSelected", skinIndex);
 
-        Debug.Log("Test" + skinIndex);
+        skinImage.sprite = skinDatas[skinIndex].GetObjectPrefabs()[0].GetSprite();
+        skinName.text = skinDatas[skinIndex].GetName();
     }
 
     private void UnlockButtonCallback(int skinIndex)
