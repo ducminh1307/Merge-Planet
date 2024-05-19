@@ -37,18 +37,11 @@ public class SettingManager : MonoBehaviour
 
     private void LoadData()
     {
-        if (!PlayerPrefs.HasKey(sfxActiveKey))
-            PlayerPrefs.SetInt(sfxActiveKey, 1);
-
-        if (!PlayerPrefs.HasKey(musicActiveKey))
-            PlayerPrefs.SetInt(musicActiveKey, 1);
-
-        sfxToggle.isOn = PlayerPrefs.GetInt(sfxActiveKey) == 1;
-        musicToggle.isOn = PlayerPrefs.GetInt(musicActiveKey) == 1;
+        sfxToggle.isOn = PlayerPrefs.GetInt(sfxActiveKey, 1) == 1;
+        musicToggle.isOn = PlayerPrefs.GetInt(musicActiveKey, 1) == 1;
     }
 
     private void SaveSFX() => PlayerPrefs.SetInt(sfxActiveKey, sfxToggle.isOn ? 1 : 0);
 
     private void SaveMusic() => PlayerPrefs.SetInt(musicActiveKey, musicToggle.isOn ? 1 : 0);
-    
 }
