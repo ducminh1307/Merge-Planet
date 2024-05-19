@@ -25,20 +25,21 @@ public class SettingManager : MonoBehaviour
 
     public void SFXToggleCallback()
     {
+        SaveSFX();
         onSFXValueChanged?.Invoke(sfxToggle.isOn);
-        SaveData();
     }
-    
+
     public void MusicToggleCallback()
     {
+        SaveMusic();
         onMusicValueChanged?.Invoke(musicToggle.isOn);
-        SaveData();
     }
 
     private void LoadData()
     {
         if (!PlayerPrefs.HasKey(sfxActiveKey))
             PlayerPrefs.SetInt(sfxActiveKey, 1);
+
         if (!PlayerPrefs.HasKey(musicActiveKey))
             PlayerPrefs.SetInt(musicActiveKey, 1);
 
@@ -46,9 +47,8 @@ public class SettingManager : MonoBehaviour
         musicToggle.isOn = PlayerPrefs.GetInt(musicActiveKey) == 1;
     }
 
-    private void SaveData()
-    {
-        PlayerPrefs.SetInt(sfxActiveKey, sfxToggle.isOn ? 1 : 0);
-        PlayerPrefs.SetInt(musicActiveKey, musicToggle.isOn ? 1 : 0);
-    }
+    private void SaveSFX() => PlayerPrefs.SetInt(sfxActiveKey, sfxToggle.isOn ? 1 : 0);
+
+    private void SaveMusic() => PlayerPrefs.SetInt(musicActiveKey, musicToggle.isOn ? 1 : 0);
+    
 }
