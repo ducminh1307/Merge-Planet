@@ -11,14 +11,16 @@ public class MergeManager : MonoBehaviour
     [Header("Settings")]
     Planet lastSender;
 
+    private WaitForEndOfFrame endFrame = new WaitForEndOfFrame();
+
     void Start()
     {
-        Planet.onCollisionWithFruit += CollisionBetweenFruitsCallback;
+        Planet.onCollisionWithPlanet += CollisionBetweenFruitsCallback;
     }
 
     private void OnDestroy()
     {
-        Planet.onCollisionWithFruit -= CollisionBetweenFruitsCallback;
+        Planet.onCollisionWithPlanet -= CollisionBetweenFruitsCallback;
     }
 
     // Update is called once per frame
@@ -53,7 +55,8 @@ public class MergeManager : MonoBehaviour
 
     IEnumerator ResetLastSenderCoroutine()
     {
-        yield return new WaitForEndOfFrame();
+        yield return endFrame;
         lastSender = null;
     }
 }
+ 

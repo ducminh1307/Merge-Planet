@@ -77,8 +77,8 @@ public class GameManager : MonoBehaviour
 
     public string NumberIntToText(int number)
     {
-        if (number < 10000)
-            return number.ToString("0000");
+        if (number >= 1000)
+            return number.ToString("0 000");
         return number.ToString();
     }
 

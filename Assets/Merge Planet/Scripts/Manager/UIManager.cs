@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     [Header(" Elements ")]
+    [SerializeField] private GameObject UIPanel;
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject gameoverPanel;
@@ -50,6 +52,7 @@ public class UIManager : MonoBehaviour
 
     private void SetMenu()
     {
+        UIPanel.SetActive(true);
         menuPanel.SetActive(true);
         gamePanel.SetActive(false);
         gameoverPanel.SetActive(false);
@@ -59,13 +62,13 @@ public class UIManager : MonoBehaviour
 
     private void SetGame()
     {
-        menuPanel.SetActive(false);
+        UIPanel.SetActive(false);
         gamePanel.SetActive(true);
-        gameoverPanel.SetActive(false);
     }
 
     private void SetGameover()
     {
+        UIPanel.SetActive(true);
         menuPanel.SetActive(false);
         gamePanel.SetActive(false);
         gameoverPanel.SetActive(true);
@@ -97,18 +100,12 @@ public class UIManager : MonoBehaviour
         shopPanel.SetActive(true);
         TabUI.instance.switchToTab(0);
         menuPanel.SetActive(false);
+        ShopManager.instance.LoadData();
     }
 
     public void BackButtonCallback()
     {
         shopPanel.SetActive(false);
         menuPanel.SetActive(true);
-    }
-
-    public string ConvertIntToString(int number)
-    {
-        if (number < 10000)
-            return number.ToString("0000");
-        return number.ToString();
     }
 }

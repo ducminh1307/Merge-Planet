@@ -63,7 +63,7 @@ public class CoinManager : MonoBehaviour
 
     public bool canPurchase(int price) => coins >= price;
 
-    private void LoadData() => coins = PlayerPrefs.GetInt(coinKey);
+    private void LoadData() => coins = PlayerPrefs.GetInt(coinKey, 0);
 
     private void SaveData() => PlayerPrefs.SetInt(coinKey, coins);
 }

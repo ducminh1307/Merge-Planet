@@ -14,10 +14,9 @@ public class Planet : MonoBehaviour
     private bool canBeMerged;
 
     [Header(" Actions ")]
-    public static UnityAction<Planet, Planet> onCollisionWithFruit;
-
-    //[Header(" Effects ")]
-    //[SerializeField] private ParticleSystem mergeParticales;
+    public static UnityAction<Planet, Planet> onCollisionWithPlanet;
+    public static UnityAction<Planet> onCollisionWithRainbow;
+    public static UnityAction onCollisionWithBomb;
 
     void Start()
     {
@@ -65,23 +64,18 @@ public class Planet : MonoBehaviour
 
         if (collision.collider.TryGetComponent(out Planet planent))
         {
-            if (planent.GetPlanetType() != type)
-                return;
 
             //if (!planent.CanBeMerged())
             //    return;
+            if (planent.GetPlanetType() != type)
+                return;
 
-            onCollisionWithFruit?.Invoke(this, planent);
+            onCollisionWithPlanet?.Invoke(this, planent);
         }
     }
 
     public void Merge()
     {
-        //if (mergeParticales != null)
-        //{
-        //    mergeParticales.transform.SetParent(null);
-        //    mergeParticales.Play();
-        //}
         Destroy(gameObject);
     }
 

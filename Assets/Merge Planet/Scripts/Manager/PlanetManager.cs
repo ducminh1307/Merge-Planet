@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 public class PlanetManager : MonoBehaviour
@@ -58,8 +58,9 @@ public class PlanetManager : MonoBehaviour
         if (!GameManager.instance.IsGameState())
             return;
 
-        if (canControl)
-            ManagePlayerInput();  
+        if (GetClickedWorldPosition().y < planetYSpawnPos)
+            if (canControl)
+                ManagePlayerInput();  
     }
 
     private void ManagePlayerInput()

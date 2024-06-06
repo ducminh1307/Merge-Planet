@@ -48,17 +48,17 @@ public class ScoreManager : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        gameScoreText.text = GameManager.instance.NumberIntToText(score);
+        gameScoreText.text = score.ToString("0000");
     }
 
     private void UpdateBestScoreText()
     {
-        menuBestScoreText.text = GameManager.instance.NumberIntToText(bestScore);
+        menuBestScoreText.text = bestScore.ToString("0000");
     }
 
     private void UpdateYourScoreText()
     {
-        yourScoreText.text = GameManager.instance.NumberIntToText(score);
+        yourScoreText.text = score.ToString("0000");
     }
 
     private void GameStateChangedCallback(GameState gameState)
